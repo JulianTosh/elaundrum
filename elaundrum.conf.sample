@@ -1,0 +1,10 @@
+mySeed=REPLACE_THIS_WITH_A_VERY_COMPLEX_STRING_HERE
+walletSeedDir=./walletSeeds
+balanceServerName=ecdsa.org
+balanceServerProto=
+balanceServerPort=
+txServer=
+gap=
+txFee=0
+minTX=1000000  #.01
+maxTX=20000000  #.2

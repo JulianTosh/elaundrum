@@ -1,0 +1,7 @@
+This is a Bitcoin laundry system based on deterministic key generation functions of Electrum.
+This will create a farm of wallets generated from a single string and route bitcoins between
+all wallets on schedule or random basis.
+
+Eventually, you'll be able to create "friendships" between wallets, and set tx/rx priorities and target balances to
+simulate customer/merchant relationships and export to wallets outside of "the community" when 
+bitcoins need to be withdrawn from the network.

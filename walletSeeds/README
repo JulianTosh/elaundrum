@@ -1,0 +1,5 @@
+This directory contains your wallet farm.
+
+Filenames are the electrum hashes to generate the wallets.
+
+.dat files contain wallet configuration items.

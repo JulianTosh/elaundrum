@@ -1,0 +1,45 @@
+#!/bin/bash
+
+#
+# Load Config
+#
+source ./loadConfig
+
+if [ $# -eq 1 ]; then
+  newIndex=$1
+else
+  #
+  # Read all seed files and determine highest index value
+  #
+  maxIndex=$(find ./walletSeeds/ -type f -exec grep "index" {} \; | awk 'max=="" || $2 > max {max=$2} END{ print max}' FS="=")
+  if [ "$maxIndex" = "" ]; then
+    maxIndex=0
+  fi
+  newIndex=$(($maxIndex + 1))
+fi
+echo "NewIndex = $newIndex"
+
+seedFN=$(echo -n "${mySeed}${newIndex}" | md5sum | cut -f1 -d" ")
+echo "Seed Filename: $seedFN"
+
+#
+# Write seed file
+#
+cat << _EOF_ > $walletSeedDir/$seedFN
+index=$newIndex
+txPri=50
+rxPri=50
+_EOF_
+
+#
+# Create Wallet
+#
+cat << _EOF_ | electrum -w $walletSeedDir/$seedFN.dat restore 2> /dev/null
+
+$balanceServerName
+$balanceServerPort
+$balanceServerProto
+$txFee
+$gap
+$seedFN
+_EOF_

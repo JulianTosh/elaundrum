@@ -1,0 +1,17 @@
+#!/bin/bash
+walletSeedDir=$(grep "^walletSeedDir=" elaundrum.conf | cut -f2 -d"=")
+mySeed=$(grep "^mySeed=" elaundrum.conf | cut -f2 -d"=")
+balanceServerName=$(grep "^balanceServerName=" elaundrum.conf | cut -f2 -d"=")
+balanceServerPort=$(grep "^balanceServerPort=" elaundrum.conf | cut -f2 -d"=")
+balanceServerProto=$(grep "^balanceServerProto=" elaundrum.conf | cut -f2 -d"=")
+txFee=$(grep "^txFee=" elaundrum.conf | cut -f2 -d"=")
+gap=$(grep "^gap=" elaundrum.conf | cut -f2 -d"=")
+
+echo "WalletSeedDir: $walletSeedDir"
+echo "My Seed:       $mySeed"
+echo "Balance Svr:   $balanceServerName"
+echo "Bal Svr port:  $balanceServerPort"
+echo "Bal Svr proto: $balanceServerProto"
+echo "TX Fee:        $txFee"
+echo "Gap:           $gap"
+
